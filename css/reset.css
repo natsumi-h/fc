@@ -1,0 +1,95 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  font-size: 62.5%;
+}
+
+@media (max-width: 1200px) {
+  html,
+  body {
+    font-size: 0.625vw;
+  }
+}
+
+@media (max-width: 414px) {
+  html,
+  body {
+    font-size: 2.4155vw;
+  }
+}
+
+body {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02rem;
+  color: #3b3938;
+  overflow-x: hidden;
+}
+
+@media (max-width: 414px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+  height: auto;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding-left: 0;
+  margin: 0 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+p {
+  margin: 0 0;
+}
+
+dd {
+  margin-left: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.l-inner {
+  margin: 0 auto;
+  padding: 0 5rem;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  max-width: 109.6rem;
+}
+
+@media (max-width: 414px) {
+  .l-inner {
+    margin: 0 3rem;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=reset.css.map */

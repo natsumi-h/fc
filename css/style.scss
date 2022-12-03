@@ -1,0 +1,1851 @@
+@charset "UTF-8";
+
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@700&display=swap');
+$navy: #0c3a6e;
+$clear-blue: #2693e7;
+$gray: #ececec;
+
+$primary-color-purple: #943a7e;
+$accent-color-yellow: #f0c546;
+$text: #3b3938;
+$backgroud-pink: #f7f2f4;
+
+$breakpoints: (
+  //キー:値
+  // "pc3": "(min-width: 1367px)" ,//1367以上のPC
+  "pc": "(max-width: 1440px)",
+  //1201px以上のPC
+  "pc2": "(max-width: 1200px)",
+  //1200px以下用の表示（タブレット〜PC）用の表示
+  // "sp2": "(max-width: 541px)", //767px以下（スマホ、タブレット）用の表示
+  "sp": "(max-width: 414px)"
+) !default;
+
+//メディアクエリ用のmixinを定義。
+//初期値をspに設定すると、引数を何も入れないときはspが適応される
+@mixin mq($breakpoint: sp) {
+  //map-get(マップ型変数, キー)で値を取得
+  @media #{map-get($breakpoints, $breakpoint)} {
+    //この中をカスタムできる
+    @content;
+  }
+}
+
+.br-sp {
+  display: none;
+  @include mq(sp) {
+    display: block;
+  }
+}
+
+.c-cta__button-wrapper {
+  @include mq(sp) {
+    width: 22.5rem;
+    margin-left: auto;
+  }
+  .c-cta__button {
+    background-color: $accent-color-yellow;
+    font-size: 2.2rem;
+    line-height: 1.454;
+    border-radius: 4.3rem;
+    padding: 2.4rem 8.6rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s;
+    cursor: pointer;
+
+    box-shadow: 0 1.2rem 1.3rem rgba(0, 0, 0, 0.16);
+    @include mq(sp) {
+      font-size: 1.4rem;
+      padding: 0.8rem 3.6rem 0.8rem 1.4rem;
+      border-radius: 0.8rem;
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.l-logo {
+  position: fixed;
+  background-color: white;
+  z-index: 9999;
+  padding: 1.4rem 3.1rem 1.4rem 1.8rem;
+  width: 22.7rem;
+  height: 9.2rem;
+  border-radius: 0 0 4.2rem 0;
+}
+
+.l-fixCta {
+  position: fixed;
+  right: 0;
+  top: 1.1rem;
+  width: 14.2rem;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 9999;
+  @include mq(sp) {
+    width: 9.3rem;
+  }
+  &:hover {
+    transform: scale(1.1);
+    top: 2.5rem;
+  }
+}
+
+.l-mv {
+  background-color: $primary-color-purple;
+
+  .l-inner {
+    padding-top: 10.5rem;
+    padding-bottom: 15.3rem;
+    position: relative;
+
+    @include mq(sp) {
+      padding-top: 4.3rem;
+    }
+    .l-mv-image {
+      position: absolute;
+      content: "";
+      top: 10.5rem;
+      right: -45rem;
+      width: 97rem;
+      height: auto;
+      z-index: 9998;
+      @include mq(sp) {
+        position: static;
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .l-mv__scroll {
+    position: absolute;
+    transform: rotate(-90deg);
+    bottom: 2rem;
+    left: -5rem;
+    width: fit-content;
+    display: inline-block;
+    @include mq(sp) {
+      display: none;
+    }
+
+    p {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+      line-height: 1.538;
+      padding-left: 0.6rem;
+    }
+
+    span {
+      display: block;
+      width: 13.6rem;
+      height: 0.1rem;
+      background-color: white;
+      margin-top: 1.5rem;
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: "";
+        background-color: white;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+      }
+    }
+  }
+
+  h1 {
+    color: white;
+    font-weight: 900;
+    font-size: 5.2rem;
+    line-height: 1.442;
+    @include mq(sp) {
+      font-size: 2.9rem;
+      line-height: 1.448;
+      text-align: center;
+    }
+  }
+  .c-cta__button-wrapper {
+    margin-top: 6.1rem;
+  }
+
+  .l-mv__sublead {
+    margin-top: 4.1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2.2rem;
+    line-height: 1.68;
+  }
+}
+
+.c-sectionTitle {
+  color: $primary-color-purple;
+  font-weight: bold;
+  font-size: 3.3rem;
+  line-height: 1.515;
+  text-align: center;
+}
+
+.l-background-wrapper {
+  background-color: $primary-color-purple;
+  // ここで調整するとよさそう
+  padding-bottom: 5rem;
+}
+
+.l-section__whatsFellows {
+  background-color: $primary-color-purple;
+  padding-top: 7.1rem;
+  // padding-bottom: 30rem;
+
+  .l-whatsFellows__title {
+    &.en {
+      color: $accent-color-yellow;
+      font-weight: bold;
+      line-height: 1.483;
+      font-family: "Oswald", sans-serif;
+      font-size: 2.9rem;
+    }
+
+    &.jp {
+      margin-top: 1.2rem;
+      p {
+        color: white;
+        letter-spacing: 0.02rem;
+        font-weight: 900;
+        font-size: 3.9rem;
+        line-height: 7.7rem;
+        background-color: #4b3546;
+        display: inline-block;
+        padding: 0 1.6rem;
+        @include mq(sp) {
+          font-size: 1.9rem;
+          line-height: 3rem;
+        }
+
+        &.pc {
+          @include mq(sp) {
+            display: none;
+          }
+        }
+
+        &.sp {
+          display: none;
+          @include mq(sp) {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .l-whatsFellows__description {
+    margin-top: 5.1rem;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    font-size: 2.4rem;
+    line-height: 6.7rem;
+  }
+}
+
+.l-section__forThose {
+  padding-top: 9.3rem;
+  position: relative;
+  z-index: 9998;
+
+  .l-forThose {
+    display: flex;
+    padding: 4.5rem 5rem 5.1rem 5rem;
+    box-shadow: 1.5rem 1.5rem 3rem rgba(0, 0, 0, 0.09);
+    border-radius: 2.4rem;
+    letter-spacing: 0.02rem;
+    gap: 0 6rem;
+    background-color: white;
+    @include mq(sp) {
+      gap: 0 0;
+      flex-wrap: wrap;
+    }
+  }
+
+  .l-forThose__detail {
+    width: 60.84%;
+    flex-shrink: 0;
+    @include mq(sp) {
+      width: 100%;
+      flex-shrink: 1;
+    }
+  }
+
+  .l-forThose__lead {
+    font-weight: 900;
+    font-size: 2.5rem;
+    line-height: 1.56;
+    color: $primary-color-purple;
+  }
+
+  ul {
+    margin-top: 1.7rem;
+
+    li {
+      &:not(:first-child) {
+        margin-top: 1.8rem;
+      }
+      font-size: 2.2rem;
+      padding-left: 4.7rem;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 2.7rem;
+        height: 2.7rem;
+        background-image: url(../img/forThose-check.png);
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  .l-forThose__img {
+    margin-top: -7rem;
+    @include mq(sp) {
+      margin-top: 0.8rem;
+      margin-bottom: -8rem;
+    }
+  }
+}
+
+.l-section__features {
+  background-color: $backgroud-pink;
+  position: relative;
+  padding-bottom: 30rem;
+  @include mq(sp) {
+    padding-bottom: 11rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /*ここで三角形のサイズを決める。必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
+    border-width: 0 0 30rem 100vw;
+    /*transparentで余分な線を消す*/
+    border-color: transparent transparent $backgroud-pink transparent;
+    @include mq(sp) {
+      top: -11rem;
+      border-width: 0 0 11rem 100vw;
+    }
+  }
+
+  .l-inner {
+    padding-top: 12.3rem;
+    padding-bottom: 7.4rem;
+  }
+
+  .l-features__title {
+    text-align: center;
+
+    h2 {
+      color: $primary-color-purple;
+      font-weight: 900;
+      font-size: 3.4rem;
+      line-height: 1.85;
+      text-align: center;
+      letter-spacing: 0.02rem;
+      margin: 0 auto;
+      display: inline-block;
+      position: relative;
+
+      span {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 0.6rem;
+        background-color: $primary-color-purple;
+        bottom: -1rem;
+        left: 0;
+        opacity: 30%;
+      }
+    }
+  }
+
+  .l-features__features {
+    margin-top: 10.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10.4rem 0;
+    @include mq(sp) {
+      gap: 7.8rem 0;
+    }
+  }
+
+  .l-features__feature {
+    letter-spacing: 0.02rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0 3.3rem;
+    @include mq(sp) {
+      flex-wrap: wrap;
+      gap: 6.2rem 0;
+    }
+
+    &.second {
+      flex-direction: row-reverse;
+      @include mq(sp) {
+        flex-direction: row;
+      }
+    }
+
+    .l-feature__detail {
+      display: grid;
+      width: 57.117%;
+      gap: 0 4.2rem;
+      grid-template-rows: min-content;
+      grid-template-columns: min-content;
+      flex-shrink: 0;
+      @include mq(sp) {
+        width: 100%;
+        flex-shrink: 1;
+        gap: 0 2.4rem;
+      }
+
+      .l-feature__number {
+        font-size: 8.7rem;
+        font-weight: bold;
+        line-height: 1;
+        color: $primary-color-purple;
+        font-family: "Oswald", sans-serif;
+        // display: inline-block;
+        grid-row: 1/2;
+        grid-column: 1/2;
+        letter-spacing: 0.02rem;
+        @include mq(sp) {
+          grid-row: 1/2;
+          grid-column: 1/2;
+          font-size: 5rem;
+        }
+      }
+
+      .l-feature__lead {
+        font-size: 2.6rem;
+        font-weight: 900;
+        line-height: 1.5;
+        grid-row: 1/2;
+        grid-column: 2/3;
+        @include mq(sp) {
+          grid-row: 1/2;
+          grid-column: 2/3;
+        }
+      }
+
+      .l-feature__description {
+        font-size: 2rem;
+        line-height: 1.75;
+        grid-row: 2/3;
+        grid-column: 2/3;
+        margin-top: 0.7rem;
+        @include mq(sp) {
+          grid-row: 2/3;
+          grid-column: 1/3;
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.l-section__creators {
+  background-color: #4b3546;
+  position: relative;
+  color: white;
+  font-size: 1.6rem;
+  letter-spacing: 0.02rem;
+  line-height: 2;
+  padding-bottom: 30rem;
+  @include mq(sp) {
+    padding-bottom: 11rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /*ここで三角形のサイズを決める。必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
+    border-width: 0 0 30rem 100vw;
+    /*transparentで余分な線を消す*/
+    border-color: transparent transparent #4b3546 transparent;
+    @include mq(sp) {
+      top: -11rem;
+      border-width: 0 0 11rem 100vw;
+    }
+  }
+
+  .l-inner {
+    padding-top: 7.3rem;
+    padding-bottom: 13.8rem;
+  }
+
+  h2 {
+    color: $accent-color-yellow;
+    text-align: center;
+    font-size: 2.9rem;
+    font-weight: bold;
+    line-height: 1.517;
+    @include mq(sp) {
+      text-align: left;
+    }
+  }
+
+  .l-creators__wrapper {
+    max-width: 88.6rem;
+    margin: 5.26rem auto 0 auto;
+  }
+
+  .l-creators__creators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem 4.6rem;
+    @include mq(sp) {
+      gap: 3rem 5.5rem;
+    }
+
+    .l-creators-creator {
+      width: calc(25% - 4.6rem * 3 / 4);
+      @include mq(sp) {
+        width: calc(50% - 5.5rem / 2);
+      }
+    }
+
+    .l-case-creator__title {
+      color: $accent-color-yellow;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 1.4;
+      text-align: center;
+      margin-top: 1.7rem;
+      height: 5.7rem;
+    }
+
+    ul {
+      margin-top: 2rem;
+      text-align: center;
+
+      li {
+        &:not(:first-child) {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+
+  .l-creators__remarks {
+    margin-top: 6.9rem;
+  }
+}
+
+.l-section__case {
+  background-color: $backgroud-pink;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /*ここで三角形のサイズを決める。必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
+    border-width: 0 0 30rem 100vw;
+    /*transparentで余分な線を消す*/
+    border-color: transparent transparent $backgroud-pink transparent;
+    @include mq(sp) {
+      top: -11rem;
+      border-width: 0 0 11rem 100vw;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.9rem;
+    font-weight: bold;
+    line-height: 1.517;
+    color: $primary-color-purple;
+  }
+
+  .l-case__p {
+    text-align: center;
+    margin-top: 4.2rem;
+    font-size: 2rem;
+    line-height: 1.75;
+  }
+
+  .l-inner {
+    padding-top: 4.2rem;
+  }
+
+  .l-case__cases {
+    display: flex;
+    gap: 0 4.8rem;
+    margin-top: 6.1rem;
+    @include mq(sp) {
+      gap: 0 0;
+      display: block;
+    }
+
+    .l-case__case {
+      width: calc(33.333333% / 4.8rem * 2 / 3);
+      background-color: white;
+      padding: 3rem;
+      box-shadow: 1rem 1rem 3rem rgba(171, 182, 204, 0.2);
+      display: flex;
+      flex-flow: column;
+      @include mq(sp) {
+        width: 100%;
+        &:not(:first-child) {
+          margin-top: 2rem;
+        }
+      }
+
+      .l-case__section {
+        &:nth-child(2) {
+          margin-top: 3.6rem;
+          height: 18.3rem;
+        }
+        &:nth-child(3) {
+          margin-top: 4.63rem;
+        }
+      }
+    }
+
+    .l-case__title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 0.03rem;
+      line-height: 2.227;
+      position: relative;
+
+      span {
+        background-color: $primary-color-purple;
+        width: 13.6rem;
+        height: 0.2rem;
+        display: block;
+        margin: 0 auto;
+        padding: absolute;
+        content: "";
+      }
+    }
+
+    .l-case__section {
+      // &:nth-child(1) {
+      //   margin-top: 3.6rem;
+      //   height: 18.3rem;
+      //   @include mq(sp) {
+      //     height: auto;
+      //   }
+      // }
+
+      // &:not(first-child) {
+      //   margin-top: 4.63rem;
+      // }
+
+      .l-case__label {
+        font-size: 1.7rem;
+        font-weight: bold;
+        line-height: 1.765;
+        background-color: $backgroud-pink;
+        color: $primary-color-purple;
+        text-align: center;
+      }
+
+      p {
+        margin-top: 0.8rem;
+        font-size: 1.8rem;
+        line-height: 1.611;
+
+        &.bold {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .l-case__result {
+      margin-top: auto;
+      span {
+        width: 3.18rem;
+        height: auto;
+        margin: 3.1rem auto 0 auto;
+        display: block;
+      }
+      p {
+        margin-top: 1.8rem;
+        background-color: #ffeaaa;
+        color: $primary-color-purple;
+        font-weight: bold;
+        padding: 1.6rem;
+        border-radius: 1rem;
+        font-size: 1.9rem;
+        line-height: 1.526;
+      }
+    }
+  }
+}
+
+.l-section__price {
+  background-color: $backgroud-pink;
+  padding-top: 14rem;
+  text-align: center;
+  // padding-bottom: 30rem;
+  // ここで調整するとよさそう
+  padding-bottom: 15rem;
+
+  .l-price__wrapper {
+    max-width: 88.6rem;
+    margin: 0 auto;
+    background-color: white;
+    padding-bottom: 6.9rem;
+    border-radius: 2.4rem;
+    // margin-bottom: -15rem;
+    box-shadow: 1.5rem 1.5rem 3rem rgba(0, 0, 0, 0.09);
+    position: relative;
+    z-index: 9998;
+  }
+
+  .l-price__title {
+    background-color: $primary-color-purple;
+    color: white;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 2.6rem;
+    padding: 1rem 0;
+    border-radius: 2.4rem 2.4rem 0 0;
+  }
+
+  .l-price__cases {
+    margin-top: 6rem;
+
+    .l-price__case {
+      &:not(:first-child) {
+        margin-top: 3.7rem;
+      }
+
+      .l-price__case-title {
+        color: $primary-color-purple;
+        font-weight: bold;
+        font-size: 2.5rem;
+        line-height: 1.64;
+      }
+      .l-price__case-price {
+        font-family: "Oswald", sans-serif;
+        font-weight: bold;
+        font-size: 5.2rem;
+        line-height: 1.5;
+        margin-top: 1rem;
+      }
+      .l-price__case-remark {
+        margin-top: 1.3rem;
+        font-size: 1.3rem;
+        line-height: 1.7r;
+      }
+    }
+  }
+
+  .l-price__flow {
+    margin: 6.2rem auto 0 auto;
+    width: 79.46%;
+    max-width: 704px;
+    @include mq(sp) {
+      width: 100%;
+    }
+
+    .pc {
+      @include mq(sp) {
+        display: none;
+      }
+    }
+
+    .sp {
+      display: none;
+      @include mq(sp) {
+        display: block;
+      }
+    }
+  }
+
+  .l-price__foc-wrapper {
+    display: inline-block;
+  }
+
+  .l-price__foc {
+    margin-top: 3rem;
+    display: flex;
+    gap: 0 1.25rem;
+    flex-wrap: nowrap;
+    padding: 0 1rem 0.3rem 1rem;
+    background: linear-gradient(transparent 40%, rgba(240, 197, 70, 0.29) 0%);
+    justify-content: center;
+    p {
+      font-weight: bold;
+      font-size: 3.4rem;
+      line-height: 1;
+    }
+  }
+
+  .l-price__text1 {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    line-height: 1.529;
+  }
+
+  .l-price__text2 {
+    margin-top: 2.4rem;
+    font-size: 1.7rem;
+    line-height: 1.529;
+  }
+
+  .c-cta__button-wrapper {
+    margin-top: 1.5rem;
+  }
+}
+
+.l-section__about {
+  position: relative;
+  padding-bottom: 30rem;
+  @include mq(sp) {
+    padding-bottom: 11rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /*ここで三角形のサイズを決める。必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
+    border-width: 0 0 30rem 100vw;
+    /*transparentで余分な線を消す*/
+    border-color: transparent transparent white transparent;
+    @include mq(sp) {
+      top: -11rem;
+      border-width: 0 0 11rem 100vw;
+    }
+  }
+}
+
+.l-inner {
+  &.about {
+    padding-top: 11.9rem;
+    @include mq(sp) {
+      padding-top: 5.1rem;
+      padding-bottom: 2.9rem;
+    }
+
+    .l-about__grid {
+      display: grid;
+      gap: 3.8rem 7.3rem;
+      max-width: 88.6rem;
+      margin: 0 auto;
+      @include mq(sp) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem 0;
+      }
+    }
+
+    .l-about__logo {
+      grid-row: 1/3;
+      grid-column: 1/2;
+      width: 17.8rem;
+      @include mq(sp) {
+        width: 100%;
+      }
+
+      img {
+        @include mq(sp) {
+          width: 53.9%;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .l-about__mission {
+      grid-row: 1/2;
+      grid-column: 2/3;
+    }
+
+    .l-about__profile {
+      grid-row: 2/3;
+      grid-column: 2/3;
+    }
+
+    .l-about__mission-p {
+      font-size: 1.8rem;
+      line-height: 1.94;
+      @include mq(sp) {
+        font-size: 1.6rem;
+      }
+    }
+
+    .l-about__profile-title {
+      color: $primary-color-purple;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 1.75;
+    }
+
+    .l-about__profile-p {
+      margin-top: 1.2rem;
+      font-size: 1.5rem;
+      line-height: 1.8;
+    }
+  }
+}
+
+.l-section__contact {
+  background-color: $backgroud-pink;
+  padding-top: 4.67rem;
+  padding-bottom: 12.4rem;
+  position: relative;
+  @include mq(sp) {
+    padding-top: 4.1rem;
+    padding-bottom: 10.7rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    /*ここで三角形のサイズを決める。必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
+    border-width: 0 0 30rem 100vw;
+    /*transparentで余分な線を消す*/
+    border-color: transparent transparent $backgroud-pink transparent;
+    @include mq(sp) {
+      top: -11rem;
+      border-width: 0 0 11rem 100vw;
+    }
+  }
+
+  .c-sectionTitle {
+    margin-top: 1rem;
+  }
+
+  .l-contact__highlight {
+    text-align: center;
+
+    .l-contact__highlight-p {
+      font-weight: bold;
+      font-size: 2rem;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+
+      .l-contact__highlight-deco {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2.68rem;
+        height: auto;
+
+        &.left {
+          left: calc(-0.8rem + -2.68rem);
+        }
+
+        &.right {
+          right: calc(-0.8rem + -2.68rem);
+        }
+      }
+    }
+  }
+
+  form {
+    .txt-error,
+    .txt-thanks,
+    .txt-submitError,
+    .loading {
+      font-weight: bold;
+      font-size: 1.7rem;
+      display: none;
+    }
+
+    .txt-error {
+      margin-top: 0.5rem;
+      color: #ff776b;
+    }
+
+    .txt-thanks,
+    .txt-submitError,
+    .loading {
+      margin-top: 2rem;
+      color: $primary-color-purple;
+    }
+
+    text-align: left;
+    // max-width: 830px;
+    // max-width: 66.9rem;
+    max-width: 669px;
+    margin: 4.2rem auto 0 auto;
+    @include mq(sp) {
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .contact-form-row {
+      // display: flex;
+      margin-top: 4rem;
+      align-items: center;
+      @include mq(sp) {
+        display: block;
+      }
+      &:not(:first-child) {
+        margin-top: 32px;
+        @include mq(pc2) {
+          margin-top: 3.2rem;
+        }
+        @include mq(sp) {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .l-contact-form-flex {
+      display: flex;
+      gap: 0 5rem;
+      @include mq(sp) {
+        display: block;
+        gap: 0;
+      }
+
+      .column {
+        width: calc(50% - 5rem / 2);
+        @include mq(sp) {
+          width: 100%;
+          &:not(:first-child) {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+
+    .contact-form-button {
+      margin: 4.05rem auto 0 auto;
+      width: 100%;
+      @include mq(sp) {
+        width: 86%;
+        margin: 3.1rem auto 0 auto;
+      }
+    }
+
+    [type="submit"] {
+      background-color: $primary-color-purple;
+      //width: 620px;
+      // max-width: 620px;
+      width: 100%;
+      height: 6.2rem;
+      line-height: 6.2rem;
+      color: white;
+      display: inline-block;
+      font-family: inherit;
+      font-weight: normal;
+      appearance: none;
+      box-shadow: 0 0.7rem 0.6rem rgba(32, 13, 13, 0.2);
+      border: none;
+      border-radius: 4.4rem;
+      cursor: pointer;
+      font-size: 1.7rem;
+      transition: all 0.3s;
+      font-weight: bold;
+      @include mq(sp) {
+        height: 5.9rem;
+        line-height: 5.9rem;
+        font-size: 1.4rem;
+      }
+      &:hover {
+        // opacity: 0.8;
+        transform: scale(1.1);
+      }
+    }
+
+    dl {
+      margin: 0 0;
+    }
+
+    dt {
+      // flex: 0 0 128px;
+      font-weight: bold;
+      // width: 30%;
+      // display: flex;
+      // align-items: center;
+      @include mq(sp) {
+        width: 100%;
+      }
+
+      // .is-required {
+      //   color: white;
+      //   background-color: $clear-blue;
+      //   height: 2.3rem;
+      //   line-height: 2.3rem;
+      //   width: 4.4rem;
+      //   font-size: 1.4rem;
+      //   font-weight: 700;
+      //   text-align: center;
+      //   margin-right: 0.8rem;
+
+      //   @include mq(sp) {
+      //     font-size: 14px;
+      //     height: 20px;
+      //     line-height: 20px;
+      //     left: calc(100% - 10px);
+      //   }
+      // }
+
+      label {
+        font-size: 1.7rem;
+        // font-weight: 700;
+        line-height: 1.47;
+        color: #373a3c;
+        position: relative;
+        // display: inline-block;
+        width: 100%;
+        @include mq(pc2) {
+          font-size: 1.8rem;
+        }
+        @include mq(sp) {
+          font-size: 14px;
+        }
+
+        &.required {
+          &::after {
+            content: "【必須】";
+            position: absolute;
+            top: 50%;
+            width: 10rem;
+            height: 1.7rem;
+            font-size: 1.7rem;
+            line-height: 1.7rem;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: #ff776b;
+            margin-left: 0.5rem;
+          }
+        }
+      }
+
+      &.dt-privacyPolicy {
+        padding-left: 5.2rem;
+        @include mq(sp) {
+          padding-left: 0;
+        }
+      }
+
+      &.dt-textarea {
+        align-self: flex-start;
+        margin-top: 0.8rem;
+      }
+    }
+
+    dd {
+      // width: 70%;
+      margin-top: 1.1rem;
+      @include mq(sp) {
+        width: 100%;
+      }
+
+      //名前の部分横並び
+      &.dd-name {
+        ul {
+          display: flex;
+          justify-content: space-between;
+        }
+        li {
+          width: calc(50% - 1.6rem / 2);
+        }
+      }
+
+      &.dd-privacyPolicy {
+        font-size: 1.7rem;
+        line-height: 2.5rem;
+        // font-weight: bold;
+        @include mq(sp) {
+          margin-top: 0.6rem;
+          font-size: 1.4rem;
+          line-height: 1.7rem;
+          text-align: center;
+        }
+      }
+    }
+
+    [type="text"] {
+      box-shadow: none;
+      border: 0.2rem solid #d9d9d9;
+      border-radius: 0.4rem;
+      background-color: white;
+      padding: 1rem 1.3rem;
+      appearance: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: 1.8rem;
+      font-weight: inherit;
+      width: 100%;
+      line-height: 2.2rem;
+      // @include mq(pc2) {
+      //   font-size: 1.4rem;
+      //   padding: 1rem 1rem;
+      // }
+      // @include mq(sp) {
+      //   font-size: 14px;
+      //   padding: 12px 16px;
+      //   line-height: 1.71428;
+      // }
+
+      &:hover {
+        border: 0.1rem solid #000000;
+        border-radius: 0.4rem;
+      }
+
+      &:focus {
+        border: 0.3rem solid $primary-color-purple;
+        outline: none;
+        border-radius: 0.4rem;
+      }
+
+      &::placeholder {
+        color: #b2b2b2;
+      }
+    }
+
+    [type="tel"] {
+      box-shadow: none;
+      border: 0.2rem solid #d9d9d9;
+      border-radius: 0.4rem;
+      background-color: white;
+      padding: 1rem 1.3rem;
+      appearance: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: 1.8rem;
+      font-weight: inherit;
+      width: 100%;
+      line-height: 2.2rem;
+      // @include mq(pc2) {
+      //   font-size: 1.4rem;
+      //   padding: 1rem 1rem;
+      // }
+      // @include mq(sp) {
+      //   font-size: 14px;
+      //   padding: 12px 16px;
+      //   line-height: 1.71428;
+      // }
+
+      &:hover {
+        border: 0.1rem solid #000000;
+        border-radius: 0.4rem;
+      }
+
+      &:focus {
+        border: 0.3rem solid $primary-color-purple;
+        outline: none;
+        border-radius: 0.4rem;
+      }
+
+      &::placeholder {
+        color: #b2b2b2;
+      }
+    }
+
+    [type="email"] {
+      box-shadow: none;
+      border: 0.2rem solid #d9d9d9;
+      border-radius: 0.4rem;
+      background-color: white;
+      padding: 1rem 1.3rem;
+      appearance: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: 1.8rem;
+      font-weight: inherit;
+      width: 100%;
+      line-height: 2.2rem;
+      // @include mq(pc2) {
+      //   font-size: 1.6rem;
+      //   padding: 1rem 1rem ;
+      // }
+
+      // @include mq(sp) {
+      //   font-size: 14px;
+      //   padding: 12px 16px;
+      //   line-height: 1.71428;
+      // }
+
+      &:hover {
+        border: 0.1rem solid #000000;
+        border-radius: 0.4rem;
+      }
+
+      &:focus {
+        border: 0.3rem solid $primary-color-purple;
+        outline: none;
+        border-radius: 0.4rem;
+      }
+
+      &::placeholder {
+        color: #b2b2b2;
+      }
+    }
+
+    select {
+      box-shadow: none;
+      border: 0.2rem solid #d9d9d9;
+      border-radius: 0.4rem;
+      background-color: white;
+      padding: 1rem 1.3rem;
+      appearance: none;
+      // color: inherit;
+      color: #b2b2b2;
+      font-family: inherit;
+      font-size: 1.8rem;
+      font-weight: inherit;
+      width: 100%;
+      line-height: 2.2rem;
+      // @include mq(pc2) {
+      //   font-size: 1.6rem;
+      //   padding: 1rem 1rem ;
+      // }
+
+      // @include mq(sp) {
+      //   font-size: 14px;
+      //   padding: 12px 16px;
+      //   line-height: 1.71428;
+      // }
+
+      &:hover {
+        border: 0.1rem solid #000000;
+        border-radius: 0.4rem;
+      }
+
+      &:focus {
+        border: 0.3rem solid $primary-color-purple;
+        outline: none;
+        border-radius: 0.4rem;
+      }
+      &::placeholder {
+        color: #b2b2b2;
+      }
+    }
+
+    .dd-select {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1.6rem;
+        width: 2.3rem;
+        height: 1.3rem;
+        background-image: url(../img/select-arrow.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        pointer-events: none;
+      }
+
+      &.select-option {
+        select {
+          color: $text;
+        }
+      }
+    }
+
+    textarea {
+      box-shadow: none;
+      border: 0.2rem solid #d9d9d9;
+      border-radius: 0.4rem;
+      background-color: white;
+      appearance: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: inherit;
+      width: 100%;
+      height: 19.1rem;
+      resize: none;
+      line-height: 1.5;
+      padding: 1rem 1.3rem;
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      // @include mq(pc2) {
+      //   font-size: 1.6rem;
+      //   padding: 1rem 1rem ;
+      //   height: 24rem;
+      // }
+      // @include mq(sp) {
+      //   font-size: 14px;
+      //   padding: 12px 16px;
+      //   line-height: 1.71428;
+      //   height: 100px;
+      // }
+
+      &:hover {
+        border: 0.1rem solid #000000;
+        border-radius: 0.4rem;
+      }
+
+      &:focus {
+        border: 0.3rem solid $primary-color-purple;
+        // outline: 3px solid $primary-color-purple;
+        outline: none;
+        border-radius: 0.4rem;
+      }
+
+      &::placeholder {
+        color: #b2b2b2;
+      }
+    }
+
+    [type="checkbox"] {
+      display: none;
+    }
+
+    .label-privacyPolicy {
+      padding-left: 3.5rem;
+      position: relative;
+    }
+
+    .checkbox-span {
+      height: 100%;
+      display: inline-block;
+      position: absolute;
+
+      &:before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        transform: translateY(-50%);
+        //left: 0;
+        left: -3.5rem;
+        width: 2.7rem;
+        height: 2.7rem;
+        border: 0.2rem solid #d9d9d9;
+        background-color: white;
+        border-radius: 0.4rem;
+      }
+
+      @include mq(sp) {
+        font-size: 14px;
+        //height: 28px;
+        line-height: 28px;
+        padding-left: 42px;
+      }
+
+      &:hover::before {
+        cursor: pointer;
+        border: 1px solid black;
+      }
+
+      &:hover::after {
+        cursor: pointer;
+      }
+
+      //チェックマーク
+      &:after {
+        opacity: 0;
+        position: absolute;
+        content: "";
+        top: calc(50% - 0.7rem);
+        left: -3rem;
+        transform: rotate(-45deg) translateY(-50%);
+        border-bottom: 4px solid $primary-color-purple;
+        border-left: 4px solid $primary-color-purple;
+        width: 30px;
+        height: 15px;
+        transition: opacity 0.5s;
+        @include mq(pc2) {
+          width: 3rem;
+          height: 1.5rem;
+          left: 0.5rem;
+          border-bottom: 0.4rem solid $text;
+          border-left: 0.4rem solid $text;
+        }
+        @include mq(sp) {
+          width: 25px;
+          height: 13px;
+          left: 5px;
+          border-bottom: 3px solid $text;
+          border-left: 3px solid $text;
+        }
+      }
+    }
+
+    .checkbox-link {
+      color: $primary-color-purple;
+      // position: relative;
+      // padding-right: 2rem;
+      text-decoration: underline;
+    }
+
+    //checkedになったときに中のチェックマークが表示される
+    [type="checkbox"]:checked + .checkbox-span {
+      &::after {
+        opacity: 100%;
+        transition: opacity 0.3s;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $text;
+  color: white;
+  padding-top: 6.1rem;
+  padding-bottom: 4.9rem;
+  position: relative;
+  @include mq(sp) {
+    padding-top: 73px;
+    padding-bottom: 38px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .l-inner {
+    @include mq(sp) {
+      margin: 0;
+    }
+  }
+
+  p {
+    text-align: center;
+    letter-spacing: 0.02em;
+    font-size: 1.5rem;
+
+    @include mq(sp) {
+      font-size: 13px;
+    }
+
+    &.l-footer__companyName {
+      font-weight: bold;
+      font-size: 1.7rem;
+      @include mq(sp) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .l-footer__detail {
+    margin-top: 4.1rem;
+    line-height: 1.9;
+    @include mq(sp) {
+      margin-top: 32px;
+    }
+  }
+
+  .l-footer__copyright {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 4.9rem;
+    opacity: 60%;
+    @include mq(sp) {
+      font-size: 12px;
+      margin-top: 26px;
+    }
+  }
+
+  .l-footer__totop {
+    position: absolute;
+    top: -3.95rem;
+    right: 17.2rem;
+    background-color: $accent-color-yellow;
+    width: 7.9rem;
+    height: 7.9rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    @include mq(sp) {
+      top: -2.713rem;
+      width: 5.426rem;
+      height: 5.426rem;
+      right: 30px;
+    }
+
+    img {
+      width: 2.7rem;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include mq(sp) {
+        width: 1.493rem;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// .p-pageTitle__wrapper {
+//   padding-top: 5.4rem;
+//   padding-bottom: 3.2rem;
+//   @include mq(sp) {
+//     padding-top: 4.6rem;
+//     padding-bottom: 3.6rem;
+//   }
+
+//   &.companyInfo {
+//     background-color: $navy;
+
+//     .l-inner {
+//       &.pageTitle {
+//         color: white;
+//         display: flex;
+//         justify-content: space-between;
+//         @include mq(sp) {
+//           flex-wrap: wrap;
+//           max-width: 19.5rem;
+//           margin: 0 auto;
+//         }
+//       }
+//     }
+//   }
+
+//   &.privacyPolicy {
+//     .p-pageTitle-en {
+//       color: $navy;
+//       display: inline-block;
+//     }
+//   }
+
+//   .p-pageTitle-en {
+//     font-family: univia-pro, sans-serif;
+//     font-size: 6rem;
+//     border-bottom: 0.4rem solid #2693e7;
+//     @include mq(sp) {
+//       font-size: 3rem;
+//       border-bottom: 0.2rem solid #2693e7;
+//     }
+//   }
+
+//   .p-pageTitle-ja {
+//     font-size: 3.6rem;
+//     font-weight: 700;
+//     @include mq(sp) {
+//       font-size: 2.2rem;
+//     }
+//   }
+
+//   .l-pageTitle-img {
+//     width: 18.8rem;
+//     height: auto;
+//     @include mq(sp) {
+//       margin-top: 2.7rem;
+//     }
+//   }
+// }
+
+// .p-companyInfo {
+//   .p-companyInfo__table {
+//     padding-top: 6.4rem;
+//     padding-bottom: 8.8rem;
+//     @include mq(sp) {
+//       padding-top: 3.2rem;
+//       padding-bottom: 3.2rem;
+//     }
+
+//     table {
+//       text-align: left;
+//       border-collapse: collapse;
+//       @include mq(sp) {
+//         width: 100%;
+//       }
+
+//       .is-sp {
+//         display: none;
+//         @include mq(sp) {
+//           display: block;
+//         }
+//       }
+
+//       tr {
+//         font-size: 2.4rem;
+//         line-height: 2.9rem;
+//         font-weight: 700;
+//         vertical-align: middle;
+//         height: 8rem;
+//         border-top: 0.2rem solid #aad5f6;
+//         border-bottom: 0.2rem solid #aad5f6;
+//         @include mq(sp) {
+//           font-size: 1.4rem;
+//           // border-top: 0.1rem solid #AAD5F6;
+//           border-top: none;
+//           border-bottom: 0.2em solid #aad5f6;
+//           height: auto;
+//           display: block;
+//           padding: 1.5rem 1.2rem;
+//           line-height: 1.9rem;
+
+//           &:nth-of-type(1) {
+//             border-top: 0.2rem solid #aad5f6;
+//           }
+//         }
+//       }
+
+//       th {
+//         width: 18rem;
+//         color: #7c726f;
+//         padding: 0 2rem;
+//         @include mq(sp) {
+//           padding: 0 0;
+//           display: block;
+//         }
+//       }
+
+//       td {
+//         @include mq(sp) {
+//           display: block;
+//           margin-top: 0.7rem;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .p-privacyPolicy {
+//   padding-top: 0;
+//   padding-bottom: 8.8rem;
+//   @include mq(sp) {
+//     padding-bottom: 3.9rem;
+//   }
+
+//   .c-privacyPolicy__item {
+//     &:not(:first-child) {
+//       margin-top: 5.5rem;
+//       @include mq(sp) {
+//         margin-top: 3rem;
+//       }
+//     }
+//   }
+
+//   .p-privacyPolicy__items {
+//     margin-top: 2.2rem;
+//     @include mq(sp) {
+//       margin-top: 0;
+//     }
+//   }
+
+//   .c-privacyPolicy__title {
+//     font-weight: 700;
+//     font-size: 2.4rem;
+//     line-height: 5rem;
+//     border-bottom: 0.4rem solid #707070;
+//     @include mq(sp) {
+//       font-size: 1.6rem;
+//       line-height: 3rem;
+//       border-bottom: 0.2rem solid #707070;
+//     }
+
+//     p {
+//       display: inline-block;
+//       position: relative;
+
+//       &:after {
+//         position: absolute;
+//         content: "";
+//         height: 0.4rem;
+//         width: 100%;
+//         background-color: $clear-blue;
+//         left: 0;
+//         bottom: -0.4rem;
+//         @include mq(sp) {
+//           height: 0.2rem;
+//           bottom: -0.2rem;
+//         }
+//       }
+//     }
+//   }
+
+//   .c-privacyPolicy__content {
+//     margin-top: 2.3rem;
+//     font-size: 1.6rem;
+//     line-height: 3rem;
+//     @include mq(sp) {
+//       font-size: 1.4rem;
+//       line-height: 2.6rem;
+//       margin-top: 1.5rem;
+//     }
+
+//     a {
+//       color: $clear-blue;
+//       position: relative;
+//       padding-right: 1.5rem;
+//       display: inline-block;
+//     }
+//   }
+// }
+
+// header {
+//   height: 10.7rem;
+//   @include mq(sp) {
+//     height: 6.4rem;
+//   }
+
+//   .l-inner {
+//     height: inherit;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
+
+//   .l-header-logo {
+//     width: 18.3rem;
+//     height: 3.5rem;
+//     @include mq(sp) {
+//       width: 9.7rem;
+//       height: 1.9rem;
+//     }
+//   }
+
+//   .header-nav-pc {
+//     @include mq(sp) {
+//       display: none;
+//     }
+//   }
+
+//   .header-nav__items {
+//     display: flex;
+//     font-size: 1.8rem;
+//     line-height: 2.2rem;
+//     font-weight: 700;
+//     gap: 4.8rem;
+//   }
+// }
