@@ -31,18 +31,26 @@ $breakpoints: (
   }
 }
 
-.br-sp {
+.br-pc,
+.lottie-pc {
+  display: block;
+  @include mq(sp) {
+    display: none;
+  }
+}
+
+.br-sp,
+.lottie-sp {
   display: none;
   @include mq(sp) {
     display: block;
   }
 }
 
+.lottie-pc {
+}
+
 .c-cta__button-wrapper {
-  @include mq(sp) {
-    width: 22.5rem;
-    margin-left: auto;
-  }
   .c-cta__button {
     background-color: $accent-color-yellow;
     font-size: 2.2rem;
@@ -53,12 +61,12 @@ $breakpoints: (
     display: inline-block;
     transition: transform 0.3s;
     cursor: pointer;
-
     box-shadow: 0 1.2rem 1.3rem rgba(0, 0, 0, 0.16);
     @include mq(sp) {
-      font-size: 1.4rem;
-      padding: 0.8rem 3.6rem 0.8rem 1.4rem;
-      border-radius: 0.8rem;
+      font-size: 1.7rem;
+      line-height: 1.47;
+      padding: 1.7rem 0rem;
+      width: 100%;
     }
     &:hover {
       transform: scale(1.1);
@@ -74,6 +82,12 @@ $breakpoints: (
   width: 22.7rem;
   height: 9.2rem;
   border-radius: 0 0 4.2rem 0;
+  @include mq(sp) {
+    width: 17.6rem;
+    height: 7.1rem;
+    padding: 1rem 1.7rem 1rem 1.7rem;
+    border-radius: 0 0 2.3rem 0;
+  }
 }
 
 .l-fixCta {
@@ -87,38 +101,54 @@ $breakpoints: (
   z-index: 9999;
   @include mq(sp) {
     width: 9.3rem;
+    top: 2.5rem;
   }
   &:hover {
     transform: scale(1.1);
-    top: 2.5rem;
   }
 }
 
 .l-mv {
   background-color: $primary-color-purple;
+  @include mq(sp) {
+    position: relative;
+  }
 
   .l-inner {
-    padding-top: 10.5rem;
+    padding-top: 13.3rem;
     padding-bottom: 15.3rem;
     position: relative;
-
     @include mq(sp) {
       padding-top: 4.3rem;
+      padding-bottom: 0;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      position: static;
     }
     .l-mv-image {
       position: absolute;
       content: "";
       top: 10.5rem;
-      right: -45rem;
+      right: -37rem;
       width: 97rem;
-      height: auto;
+      height: 97rem;
       z-index: 9998;
       @include mq(sp) {
-        position: static;
-        width: 100%;
-        height: auto;
+        // position: static;
+        // width: 100%;
+        // height: auto;
+        top: auto;
+        right: auto;
+        width: 39rem;
+        height: 39rem;
+        // white-space: nowrap;
+        // left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        // margin-left: -2rem;
+        // margin-top: 2rem;
         bottom: 0;
-        left: 0;
+        // bottom: -40rem;
       }
     }
   }
@@ -126,10 +156,11 @@ $breakpoints: (
   .l-mv__scroll {
     position: absolute;
     transform: rotate(-90deg);
-    bottom: 2rem;
-    left: -5rem;
+    bottom: 2.5rem;
+    left: -4.3rem;
     width: fit-content;
     display: inline-block;
+
     @include mq(sp) {
       display: none;
     }
@@ -141,6 +172,7 @@ $breakpoints: (
       letter-spacing: 0.1rem;
       line-height: 1.538;
       padding-left: 0.6rem;
+      font-family: "Oswald", sans-serif;
     }
 
     span {
@@ -148,7 +180,7 @@ $breakpoints: (
       width: 13.6rem;
       height: 0.1rem;
       background-color: white;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       position: relative;
 
       &:after {
@@ -170,6 +202,7 @@ $breakpoints: (
     font-weight: 900;
     font-size: 5.2rem;
     line-height: 1.442;
+    letter-spacing: 0;
     @include mq(sp) {
       font-size: 2.9rem;
       line-height: 1.448;
@@ -178,6 +211,11 @@ $breakpoints: (
   }
   .c-cta__button-wrapper {
     margin-top: 6.1rem;
+    @include mq(sp) {
+      text-align: center;
+      width: 19.4rem;
+      margin: 2.3rem auto 0 auto;
+    }
   }
 
   .l-mv__sublead {
@@ -186,6 +224,12 @@ $breakpoints: (
     font-weight: bold;
     font-size: 2.2rem;
     line-height: 1.68;
+    @include mq(sp) {
+      margin-top: 3.1rem;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 35rem;
+    }
   }
 }
 
@@ -201,12 +245,25 @@ $breakpoints: (
   background-color: $primary-color-purple;
   // ここで調整するとよさそう
   padding-bottom: 5rem;
+  @include mq(sp) {
+    padding-bottom: 0;
+  }
 }
 
 .l-section__whatsFellows {
   background-color: $primary-color-purple;
   padding-top: 7.1rem;
   // padding-bottom: 30rem;
+  @include mq(sp) {
+    padding-top: 7rem;
+    padding-bottom: 11rem;
+  }
+
+  .l-inner {
+    @include mq(sp) {
+      padding-bottom: 4.2rem;
+    }
+  }
 
   .l-whatsFellows__title {
     &.en {
@@ -215,10 +272,16 @@ $breakpoints: (
       line-height: 1.483;
       font-family: "Oswald", sans-serif;
       font-size: 2.9rem;
+      @include mq(sp) {
+        font-size: 1.8rem;
+      }
     }
 
     &.jp {
       margin-top: 1.2rem;
+      @include mq(sp) {
+        margin-top: 1.1rem;
+      }
       p {
         color: white;
         letter-spacing: 0.02rem;
@@ -230,7 +293,7 @@ $breakpoints: (
         padding: 0 1.6rem;
         @include mq(sp) {
           font-size: 1.9rem;
-          line-height: 3rem;
+          line-height: 4.7rem;
         }
 
         &.pc {
@@ -249,32 +312,76 @@ $breakpoints: (
     }
   }
 
-  .l-whatsFellows__description {
-    margin-top: 5.1rem;
+  .l-whatsFellows__description,
+  .l-whatsFellows__description-2 {
+    // margin-top: 5.1rem;
     color: white;
     font-weight: bold;
     letter-spacing: 0.02rem;
     font-size: 2.4rem;
     line-height: 6.7rem;
+    @include mq(sp) {
+      font-size: 1.6rem;
+      line-height: 3.3rem;
+    }
+  }
+
+  .l-whatsFellows__description {
+    margin-top: 3.5rem;
+    @include mq(sp) {
+      margin-top: 3.3rem;
+    }
+  }
+
+  .l-whatsFellows__description-2 {
+    margin-top: 2rem;
+    @include mq(sp) {
+      margin-top: 3.3rem;
+    }
   }
 }
 
 .l-section__forThose {
-  padding-top: 9.3rem;
+  // padding-top: 9.3rem;
+  padding-top: 7.5rem;
   position: relative;
   z-index: 9998;
+  @include mq(sp) {
+    // padding-top: 7.9rem;
+    padding-top: 0;
+    background-color: $backgroud-pink;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -11rem;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      /*ここで三角形のサイズを決める。必ず幅100vwにして、ブラウザサイズいっぱいにしてください。*/
+      border-width: 0 0 11rem 100vw;
+      /*transparentで余分な線を消す*/
+      border-color: transparent transparent $backgroud-pink transparent;
+    }
+  }
 
   .l-forThose {
     display: flex;
-    padding: 4.5rem 5rem 5.1rem 5rem;
+    // padding: 4.5rem 5rem 5.1rem 5rem;
+    padding: 4.5rem 5rem 3.5rem 5rem;
     box-shadow: 1.5rem 1.5rem 3rem rgba(0, 0, 0, 0.09);
     border-radius: 2.4rem;
     letter-spacing: 0.02rem;
     gap: 0 6rem;
     background-color: white;
     @include mq(sp) {
+      border-radius: 1.2rem;
       gap: 0 0;
       flex-wrap: wrap;
+      padding: 3rem 2rem 5.5rem 2rem;
+      position: relative;
+      top: -7.5rem;
     }
   }
 
@@ -292,6 +399,9 @@ $breakpoints: (
     font-size: 2.5rem;
     line-height: 1.56;
     color: $primary-color-purple;
+    @include mq(sp) {
+      font-size: 1.8rem;
+    }
   }
 
   ul {
@@ -299,11 +409,19 @@ $breakpoints: (
 
     li {
       &:not(:first-child) {
-        margin-top: 1.8rem;
+        // margin-top: 1.8rem;
+        margin-top: 1.5rem;
+        @include mq(sp) {
+          margin-top: 1.8rem;
+        }
       }
       font-size: 2.2rem;
       padding-left: 4.7rem;
       position: relative;
+      @include mq(sp) {
+        padding-left: 3.4rem;
+        font-size: 1.6rem;
+      }
 
       &::before {
         position: absolute;
@@ -316,6 +434,13 @@ $breakpoints: (
         left: 0;
         background-repeat: no-repeat;
         background-size: contain;
+        @include mq(sp) {
+          width: 2rem;
+          height: 2rem;
+          // top: 1.4rem;
+          top: 0.5rem;
+          transform: none;
+        }
       }
     }
   }
@@ -325,6 +450,10 @@ $breakpoints: (
     @include mq(sp) {
       margin-top: 0.8rem;
       margin-bottom: -8rem;
+      width: 80%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
@@ -358,6 +487,11 @@ $breakpoints: (
   .l-inner {
     padding-top: 12.3rem;
     padding-bottom: 7.4rem;
+    @include mq(sp) {
+      padding-bottom: 3.2rem;
+      // padding-top: 60rem;
+      padding-top: 5.5rem;
+    }
   }
 
   .l-features__title {
@@ -373,6 +507,9 @@ $breakpoints: (
       margin: 0 auto;
       display: inline-block;
       position: relative;
+      @include mq(sp) {
+        font-size: 2rem;
+      }
 
       span {
         position: absolute;
@@ -394,6 +531,7 @@ $breakpoints: (
     gap: 10.4rem 0;
     @include mq(sp) {
       gap: 7.8rem 0;
+      margin-top: 5.5rem;
     }
   }
 
@@ -441,6 +579,7 @@ $breakpoints: (
           grid-row: 1/2;
           grid-column: 1/2;
           font-size: 5rem;
+          margin-top: 1.2rem;
         }
       }
 
@@ -453,6 +592,8 @@ $breakpoints: (
         @include mq(sp) {
           grid-row: 1/2;
           grid-column: 2/3;
+          font-size: 2rem;
+          line-height: 1.4;
         }
       }
 
@@ -461,11 +602,13 @@ $breakpoints: (
         line-height: 1.75;
         grid-row: 2/3;
         grid-column: 2/3;
-        margin-top: 0.7rem;
+        margin-top: 1.5rem;
         @include mq(sp) {
           grid-row: 2/3;
           grid-column: 1/3;
           margin-top: 2rem;
+          font-size: 1.6rem;
+          line-height: 1.9375;
         }
       }
     }
@@ -482,6 +625,7 @@ $breakpoints: (
   padding-bottom: 30rem;
   @include mq(sp) {
     padding-bottom: 11rem;
+    font-size: 1.2rem;
   }
 
   &::before {
@@ -505,6 +649,10 @@ $breakpoints: (
   .l-inner {
     padding-top: 7.3rem;
     padding-bottom: 13.8rem;
+    @include mq(sp) {
+      padding-top: 4.3rem;
+      padding-bottom: 3.8rem;
+    }
   }
 
   h2 {
@@ -515,12 +663,16 @@ $breakpoints: (
     line-height: 1.517;
     @include mq(sp) {
       text-align: left;
+      font-size: 2.1rem;
     }
   }
 
   .l-creators__wrapper {
     max-width: 88.6rem;
     margin: 5.26rem auto 0 auto;
+    @include mq(sp) {
+      margin-top: 4.42rem;
+    }
   }
 
   .l-creators__creators {
@@ -529,6 +681,7 @@ $breakpoints: (
     gap: 4rem 4.6rem;
     @include mq(sp) {
       gap: 3rem 5.5rem;
+      padding: 0 1.3rem;
     }
 
     .l-creators-creator {
@@ -546,22 +699,37 @@ $breakpoints: (
       text-align: center;
       margin-top: 1.7rem;
       height: 5.7rem;
+      @include mq(sp) {
+        font-size: 1.5rem;
+        margin-top: 1.2rem;
+      }
     }
 
     ul {
       margin-top: 2rem;
       text-align: center;
+      @include mq(sp) {
+        margin-top: 0.5rem;
+      }
 
       li {
         &:not(:first-child) {
-          margin-top: 1rem;
+          // margin-top: 1rem;
+          @include mq(sp) {
+            // margin-top: 0.5rem;
+            white-space: nowrap;
+          }
         }
       }
     }
   }
 
   .l-creators__remarks {
-    margin-top: 6.9rem;
+    // margin-top: 6.9rem;
+    margin-top: 6rem;
+    @include mq(sp) {
+      margin-top: 8.5rem;
+    }
   }
 }
 
@@ -593,6 +761,11 @@ $breakpoints: (
     font-weight: bold;
     line-height: 1.517;
     color: $primary-color-purple;
+    @include mq(sp) {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1.85;
+    }
   }
 
   .l-case__p {
@@ -600,10 +773,18 @@ $breakpoints: (
     margin-top: 4.2rem;
     font-size: 2rem;
     line-height: 1.75;
+    @include mq(sp) {
+      font-size: 1.6rem;
+      line-height: 1.94;
+      margin-top: 1.5rem;
+    }
   }
 
   .l-inner {
     padding-top: 4.2rem;
+    @include mq(sp) {
+      padding-top: 5.7rem;
+    }
   }
 
   .l-case__cases {
@@ -613,16 +794,18 @@ $breakpoints: (
     @include mq(sp) {
       gap: 0 0;
       display: block;
+      margin-top: 2.5rem;
     }
 
     .l-case__case {
       width: calc(33.333333% / 4.8rem * 2 / 3);
       background-color: white;
-      padding: 3rem;
+      padding: 2rem 3rem 3rem 3rem;
       box-shadow: 1rem 1rem 3rem rgba(171, 182, 204, 0.2);
       display: flex;
       flex-flow: column;
       @include mq(sp) {
+        display: block;
         width: 100%;
         &:not(:first-child) {
           margin-top: 2rem;
@@ -633,9 +816,15 @@ $breakpoints: (
         &:nth-child(2) {
           margin-top: 3.6rem;
           height: 18.3rem;
+          @include mq(sp) {
+            height: auto;
+          }
         }
         &:nth-child(3) {
           margin-top: 4.63rem;
+          @include mq(sp) {
+            margin-top: 2.5rem;
+          }
         }
       }
     }
@@ -647,6 +836,11 @@ $breakpoints: (
       letter-spacing: 0.03rem;
       line-height: 2.227;
       position: relative;
+      @include mq(sp) {
+        font-size: 2rem;
+        line-height: 2.5;
+        font-weight: 900;
+      }
 
       span {
         background-color: $primary-color-purple;
@@ -685,6 +879,10 @@ $breakpoints: (
         margin-top: 0.8rem;
         font-size: 1.8rem;
         line-height: 1.611;
+        @include mq(sp) {
+          font-size: 1.6rem;
+          line-height: 1.875;
+        }
 
         &.bold {
           font-weight: bold;
@@ -699,6 +897,9 @@ $breakpoints: (
         height: auto;
         margin: 3.1rem auto 0 auto;
         display: block;
+        @include mq(sp) {
+          margin: 2rem auto 0 auto;
+        }
       }
       p {
         margin-top: 1.8rem;
@@ -709,6 +910,10 @@ $breakpoints: (
         border-radius: 1rem;
         font-size: 1.9rem;
         line-height: 1.526;
+        @include mq(sp) {
+          font-size: 1.6rem;
+          line-height: 1.9375;
+        }
       }
     }
   }
@@ -718,15 +923,17 @@ $breakpoints: (
   background-color: $backgroud-pink;
   padding-top: 14rem;
   text-align: center;
-  // padding-bottom: 30rem;
   // ここで調整するとよさそう
-  padding-bottom: 15rem;
+  padding-bottom: 13rem;
+  @include mq(sp) {
+    padding-bottom: 5rem;
+    padding-top: 6rem;
+  }
 
   .l-price__wrapper {
     max-width: 88.6rem;
     margin: 0 auto;
     background-color: white;
-    padding-bottom: 6.9rem;
     border-radius: 2.4rem;
     // margin-bottom: -15rem;
     box-shadow: 1.5rem 1.5rem 3rem rgba(0, 0, 0, 0.09);
@@ -742,14 +949,27 @@ $breakpoints: (
     font-size: 2.6rem;
     padding: 1rem 0;
     border-radius: 2.4rem 2.4rem 0 0;
+    @include mq(sp) {
+      font-size: 2rem;
+      padding: 1.3rem 0;
+    }
+  }
+
+  .l-price__detail {
+    padding-top: 6rem;
+    padding-bottom: 6.9rem;
+    @include mq(sp) {
+      padding: 3rem 2.3rem 3.6rem 2.3rem;
+    }
   }
 
   .l-price__cases {
-    margin-top: 6rem;
-
     .l-price__case {
       &:not(:first-child) {
         margin-top: 3.7rem;
+        @include mq(sp) {
+          margin-top: 3rem;
+        }
       }
 
       .l-price__case-title {
@@ -757,6 +977,9 @@ $breakpoints: (
         font-weight: bold;
         font-size: 2.5rem;
         line-height: 1.64;
+        @include mq(sp) {
+          font-size: 1.5rem;
+        }
       }
       .l-price__case-price {
         font-family: "Oswald", sans-serif;
@@ -764,11 +987,20 @@ $breakpoints: (
         font-size: 5.2rem;
         line-height: 1.5;
         margin-top: 1rem;
+        @include mq(sp) {
+          font-size: 3.2rem;
+          margin-top: 0.7rem;
+        }
       }
       .l-price__case-remark {
-        margin-top: 1.3rem;
+        margin-top: 0.8rem;
         font-size: 1.3rem;
         line-height: 1.7r;
+        @include mq(sp) {
+          font-size: 1.2rem;
+          margin-top: 2rem;
+          text-align: left;
+        }
       }
     }
   }
@@ -779,6 +1011,7 @@ $breakpoints: (
     max-width: 704px;
     @include mq(sp) {
       width: 100%;
+      margin-top: 4.1rem;
     }
 
     .pc {
@@ -807,10 +1040,24 @@ $breakpoints: (
     padding: 0 1rem 0.3rem 1rem;
     background: linear-gradient(transparent 40%, rgba(240, 197, 70, 0.29) 0%);
     justify-content: center;
+    @include mq(sp) {
+      gap: 0 1rem;
+      margin-top: 4.5rem;
+    }
     p {
       font-weight: bold;
       font-size: 3.4rem;
       line-height: 1;
+      @include mq(sp) {
+        font-size: 2.8rem;
+      }
+    }
+    img {
+      width: 3.6rem;
+      height: auto;
+      @include mq(sp) {
+        width: 3rem;
+      }
     }
   }
 
@@ -818,16 +1065,24 @@ $breakpoints: (
     margin-top: 1rem;
     font-size: 1.7rem;
     line-height: 1.529;
+    @include mq(sp) {
+      font-size: 1.4rem;
+      margin-top: 1.6rem;
+    }
   }
 
   .l-price__text2 {
     margin-top: 2.4rem;
     font-size: 1.7rem;
     line-height: 1.529;
+    @include mq(sp) {
+      font-size: 1.4rem;
+      margin-top: 3.5rem;
+    }
   }
 
   .c-cta__button-wrapper {
-    margin-top: 1.5rem;
+    margin: 1.5rem auto 0 auto;
   }
 }
 
@@ -1016,12 +1271,12 @@ $breakpoints: (
     margin: 4.2rem auto 0 auto;
     @include mq(sp) {
       width: 100%;
-      margin-top: 40px;
+      margin-top: 7.16rem;
     }
 
     .contact-form-row {
       // display: flex;
-      margin-top: 4rem;
+      // margin-top: 4rem;
       align-items: center;
       @include mq(sp) {
         display: block;
@@ -1217,6 +1472,9 @@ $breakpoints: (
       font-weight: inherit;
       width: 100%;
       line-height: 2.2rem;
+      @include mq(sp) {
+        font-size: 1.7rem;
+      }
       // @include mq(pc2) {
       //   font-size: 1.4rem;
       //   padding: 1rem 1rem;
@@ -1256,6 +1514,9 @@ $breakpoints: (
       font-weight: inherit;
       width: 100%;
       line-height: 2.2rem;
+      @include mq(sp) {
+        font-size: 1.7rem;
+      }
       // @include mq(pc2) {
       //   font-size: 1.4rem;
       //   padding: 1rem 1rem;
@@ -1295,6 +1556,9 @@ $breakpoints: (
       font-weight: inherit;
       width: 100%;
       line-height: 2.2rem;
+      @include mq(sp) {
+        font-size: 1.7rem;
+      }
       // @include mq(pc2) {
       //   font-size: 1.6rem;
       //   padding: 1rem 1rem ;
@@ -1336,6 +1600,9 @@ $breakpoints: (
       font-weight: inherit;
       width: 100%;
       line-height: 2.2rem;
+      @include mq(sp) {
+        font-size: 1.7rem;
+      }
       // @include mq(pc2) {
       //   font-size: 1.6rem;
       //   padding: 1rem 1rem ;
@@ -1402,6 +1669,9 @@ $breakpoints: (
       padding: 1rem 1.3rem;
       font-size: 1.8rem;
       line-height: 2.2rem;
+      @include mq(sp) {
+        font-size: 1.7rem;
+      }
       // @include mq(pc2) {
       //   font-size: 1.6rem;
       //   padding: 1rem 1rem ;
@@ -1560,7 +1830,7 @@ footer {
   }
 
   .l-footer__detail {
-    margin-top: 4.1rem;
+    margin-top: 4rem;
     line-height: 1.9;
     @include mq(sp) {
       margin-top: 32px;
@@ -1570,7 +1840,8 @@ footer {
   .l-footer__copyright {
     text-align: center;
     font-size: 1.4rem;
-    margin-top: 4.9rem;
+    // margin-top: 4.9rem;
+    margin-top: 3.5rem;
     opacity: 60%;
     @include mq(sp) {
       font-size: 12px;

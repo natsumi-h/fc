@@ -3,6 +3,7 @@ body {
   margin: 0px;
   padding: 0px;
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1200px) {
@@ -15,6 +16,13 @@ body {
 @media (max-width: 414px) {
   html,
   body {
+    font-size: 62.5%;
+  }
+}
+
+@media (max-width: 389px) {
+  html,
+  body {
     font-size: 2.4155vw;
   }
 }
@@ -25,7 +33,6 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   letter-spacing: 0.02rem;
   color: #3b3938;
-  overflow-x: hidden;
 }
 
 @media (max-width: 414px) {

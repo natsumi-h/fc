@@ -12,12 +12,13 @@ $text: #3b3938;
 $breakpoints: (
   //キー:値
   // "pc3": "(min-width: 1367px)" ,//1367以上のPC
-  "pc": "(max-width: 1366px)",
+  "pc": "(max-width: 1440px)",
   //1200px以上のPC
   "pc2": "(max-width: 1200px)",
   //1200px以下用の表示（タブレット〜PC）用の表示
   //  "sp2": "(max-width: 541px)", //767px以下（スマホ、タブレット）用の表示
-  "sp": "(max-width: 414px)"
+  "sp": "(max-width: 414px)",
+  "sp2": "(max-width:389px)"
 ) !default;
 
 //メディアクエリ用のmixinを定義。
@@ -35,6 +36,7 @@ body {
   margin: 0px;
   padding: 0px;
   font-size: 62.5%;
+  overflow-x: hidden;
   // @include mq(pc) {
   //   font-size: 0.625vw;
   // }
@@ -42,20 +44,23 @@ body {
     font-size: 0.625vw;
   }
   @include mq(sp) {
+    font-size: 62.5%;
+  }
+  @include mq(sp2) {
     font-size: 2.4155vw;
   }
+  // @include mq(sp) {
+  //   font-size: 2.4155vw;
+  // }
 }
 
 body {
   font-size: 14px;
   // line-height: 1.71428;
   font-weight: 500;
-  // font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;;
-  // font-family: "Open Sans", sans-serif;
   font-family: "Noto Sans JP", sans-serif;
   letter-spacing: 0.02rem;
   color: $text;
-  overflow-x: hidden;
   @include mq(sp) {
     font-size: 14px;
   }
@@ -83,7 +88,6 @@ a {
 
 a:hover {
   cursor: pointer;
-  // opacity: 0.8;
   transition: all 0.3s;
 }
 

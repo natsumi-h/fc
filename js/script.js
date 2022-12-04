@@ -135,7 +135,7 @@ jQuery(function () {
       validateName();
       validateType();
       validateEmail();
-      // validateMessage();
+      validateMessage();
       validatePolicyAgreement();
 
       // Ajax通信中
