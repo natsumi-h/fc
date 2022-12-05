@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@700&display=swap");
 .br-pc,
 .lottie-pc {
   display: block;
@@ -302,7 +303,7 @@
   }
 }
 
-.l-section__whatsFellows .l-whatsFellows__title.jp p {
+.l-section__whatsFellows .l-whatsFellows__title.jp span {
   color: white;
   letter-spacing: 0.02rem;
   font-weight: 900;
@@ -314,24 +315,24 @@
 }
 
 @media (max-width: 414px) {
-  .l-section__whatsFellows .l-whatsFellows__title.jp p {
+  .l-section__whatsFellows .l-whatsFellows__title.jp span {
     font-size: 1.9rem;
     line-height: 4.7rem;
   }
 }
 
 @media (max-width: 414px) {
-  .l-section__whatsFellows .l-whatsFellows__title.jp p.pc {
+  .l-section__whatsFellows .l-whatsFellows__title.jp span.pc {
     display: none;
   }
 }
 
-.l-section__whatsFellows .l-whatsFellows__title.jp p.sp {
+.l-section__whatsFellows .l-whatsFellows__title.jp span.sp {
   display: none;
 }
 
 @media (max-width: 414px) {
-  .l-section__whatsFellows .l-whatsFellows__title.jp p.sp {
+  .l-section__whatsFellows .l-whatsFellows__title.jp span.sp {
     display: inline-block;
   }
 }
@@ -979,7 +980,7 @@
 }
 
 .l-section__case .l-case__cases .l-case__case {
-  width: calc(33.333333% / 4.8rem * 2 / 3);
+  width: calc(33.333333% - 4.8rem * 2 / 3);
   background-color: white;
   padding: 2rem 3rem 3rem 3rem;
   -webkit-box-shadow: 1rem 1rem 3rem rgba(171, 182, 204, 0.2);
@@ -1047,8 +1048,11 @@
   height: 0.2rem;
   display: block;
   margin: 0 auto;
-  padding: absolute;
+  position: absolute;
   content: "";
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .l-section__case .l-case__cases .l-case__section .l-case__label {
@@ -1206,7 +1210,7 @@
 .l-section__price .l-price__cases .l-price__case .l-price__case-remark {
   margin-top: 0.8rem;
   font-size: 1.3rem;
-  line-height: 1.7r;
+  line-height: 1.7;
 }
 
 @media (max-width: 414px) {

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@700&display=swap');
 $navy: #0c3a6e;
 $clear-blue: #2693e7;
 $gray: #ececec;
@@ -279,7 +279,7 @@ $breakpoints: (
       @include mq(sp) {
         margin-top: 1.1rem;
       }
-      p {
+      span {
         color: white;
         letter-spacing: 0.02rem;
         font-weight: 900;
@@ -795,7 +795,7 @@ $breakpoints: (
     }
 
     .l-case__case {
-      width: calc(33.333333% / 4.8rem * 2 / 3);
+      width: calc(33.333333% - 4.8rem * 2 / 3);
       background-color: white;
       padding: 2rem 3rem 3rem 3rem;
       box-shadow: 1rem 1rem 3rem rgba(171, 182, 204, 0.2);
@@ -845,8 +845,11 @@ $breakpoints: (
         height: 0.2rem;
         display: block;
         margin: 0 auto;
-        padding: absolute;
+        // padding: absolute;
+        position: absolute;
         content: "";
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
 
@@ -992,7 +995,7 @@ $breakpoints: (
       .l-price__case-remark {
         margin-top: 0.8rem;
         font-size: 1.3rem;
-        line-height: 1.7r;
+        line-height: 1.7;
         @include mq(sp) {
           font-size: 1.2rem;
           margin-top: 2rem;
