@@ -47,9 +47,6 @@ $breakpoints: (
   }
 }
 
-.lottie-pc {
-}
-
 .c-cta__button-wrapper {
   .c-cta__button {
     background-color: $accent-color-yellow;
@@ -187,8 +184,8 @@ $breakpoints: (
         position: absolute;
         content: "";
         background-color: white;
-        width: 7px;
-        height: 7px;
+        width: 0.7rem;
+        height: 0.7rem;
         border-radius: 50%;
         top: 50%;
         transform: translateY(-50%);
@@ -1255,6 +1252,11 @@ $breakpoints: (
     .txt-error {
       margin-top: 0.5rem;
       color: #ff776b;
+
+      &.privacyPolicy,
+      &.wrongInputs {
+        margin-top: 1.5rem;
+      }
     }
 
     .txt-thanks,
@@ -1282,12 +1284,9 @@ $breakpoints: (
         display: block;
       }
       &:not(:first-child) {
-        margin-top: 32px;
-        @include mq(pc2) {
-          margin-top: 3.2rem;
-        }
+        margin-top: 3.2rem;
         @include mq(sp) {
-          margin-top: 20px;
+          margin-top: 2rem;
         }
       }
     }
@@ -1305,7 +1304,7 @@ $breakpoints: (
         @include mq(sp) {
           width: 100%;
           &:not(:first-child) {
-            margin-top: 20px;
+            margin-top: 2rem;
           }
         }
       }
@@ -1395,7 +1394,7 @@ $breakpoints: (
           font-size: 1.8rem;
         }
         @include mq(sp) {
-          font-size: 14px;
+          font-size: 1.4rem;
         }
 
         &.required {
@@ -1452,9 +1451,7 @@ $breakpoints: (
         // font-weight: bold;
         @include mq(sp) {
           margin-top: 0.6rem;
-          font-size: 1.4rem;
-          line-height: 1.7rem;
-          text-align: center;
+          line-height: 1.47rem;
         }
       }
     }
@@ -1559,16 +1556,6 @@ $breakpoints: (
       @include mq(sp) {
         font-size: 1.7rem;
       }
-      // @include mq(pc2) {
-      //   font-size: 1.6rem;
-      //   padding: 1rem 1rem ;
-      // }
-
-      // @include mq(sp) {
-      //   font-size: 14px;
-      //   padding: 12px 16px;
-      //   line-height: 1.71428;
-      // }
 
       &:hover {
         border: 0.1rem solid #000000;
@@ -1593,7 +1580,6 @@ $breakpoints: (
       background-color: white;
       padding: 1rem 1.3rem;
       appearance: none;
-      // color: inherit;
       color: #b2b2b2;
       font-family: inherit;
       font-size: 1.8rem;
@@ -1603,16 +1589,6 @@ $breakpoints: (
       @include mq(sp) {
         font-size: 1.7rem;
       }
-      // @include mq(pc2) {
-      //   font-size: 1.6rem;
-      //   padding: 1rem 1rem ;
-      // }
-
-      // @include mq(sp) {
-      //   font-size: 14px;
-      //   padding: 12px 16px;
-      //   line-height: 1.71428;
-      // }
 
       &:hover {
         border: 0.1rem solid #000000;
@@ -1660,7 +1636,7 @@ $breakpoints: (
       appearance: none;
       color: inherit;
       font-family: inherit;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-weight: inherit;
       width: 100%;
       height: 19.1rem;
@@ -1708,6 +1684,10 @@ $breakpoints: (
     .label-privacyPolicy {
       padding-left: 3.5rem;
       position: relative;
+      @include mq(sp) {
+        // padding-left: 2rem;
+        //padding-left: 4rem;
+      }
     }
 
     .checkbox-span {
@@ -1715,6 +1695,7 @@ $breakpoints: (
       display: inline-block;
       position: absolute;
 
+      // ボックス
       &:before {
         position: absolute;
         content: "";
@@ -1727,18 +1708,26 @@ $breakpoints: (
         border: 0.2rem solid #d9d9d9;
         background-color: white;
         border-radius: 0.4rem;
+        @include mq(sp) {
+          width: 2.5rem;
+          height: 2.5rem;
+          left: -3.3rem;
+          // top: calc(50% - 0.2rem);
+          top: -0.5rem;
+          transform: none;
+        }
       }
 
-      @include mq(sp) {
-        font-size: 14px;
-        //height: 28px;
-        line-height: 28px;
-        padding-left: 42px;
-      }
+      // @include mq(sp) {
+      //   font-size: 1.4rem;
+      //   //height: 28px;
+      //   line-height: 2.8rem;
+      //   padding-left: 4.2rem;
+      // }
 
       &:hover::before {
         cursor: pointer;
-        border: 1px solid black;
+        border: 0.1rem solid $primary-color-purple;
       }
 
       &:hover::after {
@@ -1753,24 +1742,25 @@ $breakpoints: (
         top: calc(50% - 0.7rem);
         left: -3rem;
         transform: rotate(-45deg) translateY(-50%);
-        border-bottom: 4px solid $primary-color-purple;
-        border-left: 4px solid $primary-color-purple;
-        width: 30px;
-        height: 15px;
+        border-bottom: 0.4rem solid $primary-color-purple;
+        border-left: 0.4rem solid $primary-color-purple;
+        width: 3rem;
+        height: 1.5rem;
         transition: opacity 0.5s;
-        @include mq(pc2) {
-          width: 3rem;
-          height: 1.5rem;
-          left: 0.5rem;
-          border-bottom: 0.4rem solid $text;
-          border-left: 0.4rem solid $text;
-        }
+        // @include mq(pc2) {
+        //   width: 3rem;
+        //   height: 1.5rem;
+        //   left: 0.5rem;
+        //   border-bottom: 0.4rem solid $primary-color-purple;
+        //   border-left: 0.4rem solid $primary-color-purple;
+        // }
         @include mq(sp) {
-          width: 25px;
-          height: 13px;
-          left: 5px;
-          border-bottom: 3px solid $text;
-          border-left: 3px solid $text;
+          width: 2.5rem;
+          height: 1.3rem;
+          left: -2.8rem;
+          top: calc(50% - 1rem);
+          border-bottom: 0.3rem solid $primary-color-purple;
+          border-left: 0.3rem solid $primary-color-purple;
         }
       }
     }
@@ -1799,10 +1789,10 @@ footer {
   padding-bottom: 4.9rem;
   position: relative;
   @include mq(sp) {
-    padding-top: 73px;
-    padding-bottom: 38px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-top: 7.3rem;
+    padding-bottom: 3.8rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .l-inner {
@@ -1817,14 +1807,14 @@ footer {
     font-size: 1.5rem;
 
     @include mq(sp) {
-      font-size: 13px;
+      font-size: 1.3rem;
     }
 
     &.l-footer__companyName {
       font-weight: bold;
       font-size: 1.7rem;
       @include mq(sp) {
-        font-size: 15px;
+        font-size: 1.5rem;
       }
     }
   }
@@ -1833,7 +1823,7 @@ footer {
     margin-top: 4rem;
     line-height: 1.9;
     @include mq(sp) {
-      margin-top: 32px;
+      margin-top: 3.2rem;
     }
   }
 
@@ -1844,8 +1834,8 @@ footer {
     margin-top: 3.5rem;
     opacity: 60%;
     @include mq(sp) {
-      font-size: 12px;
-      margin-top: 26px;
+      font-size: 1.2rem;
+      margin-top: 2.6rem;
     }
   }
 
@@ -1864,7 +1854,7 @@ footer {
       top: -2.713rem;
       width: 5.426rem;
       height: 5.426rem;
-      right: 30px;
+      right: 3rem;
     }
 
     img {
@@ -1884,239 +1874,3 @@ footer {
     }
   }
 }
-
-// .p-pageTitle__wrapper {
-//   padding-top: 5.4rem;
-//   padding-bottom: 3.2rem;
-//   @include mq(sp) {
-//     padding-top: 4.6rem;
-//     padding-bottom: 3.6rem;
-//   }
-
-//   &.companyInfo {
-//     background-color: $navy;
-
-//     .l-inner {
-//       &.pageTitle {
-//         color: white;
-//         display: flex;
-//         justify-content: space-between;
-//         @include mq(sp) {
-//           flex-wrap: wrap;
-//           max-width: 19.5rem;
-//           margin: 0 auto;
-//         }
-//       }
-//     }
-//   }
-
-//   &.privacyPolicy {
-//     .p-pageTitle-en {
-//       color: $navy;
-//       display: inline-block;
-//     }
-//   }
-
-//   .p-pageTitle-en {
-//     font-family: univia-pro, sans-serif;
-//     font-size: 6rem;
-//     border-bottom: 0.4rem solid #2693e7;
-//     @include mq(sp) {
-//       font-size: 3rem;
-//       border-bottom: 0.2rem solid #2693e7;
-//     }
-//   }
-
-//   .p-pageTitle-ja {
-//     font-size: 3.6rem;
-//     font-weight: 700;
-//     @include mq(sp) {
-//       font-size: 2.2rem;
-//     }
-//   }
-
-//   .l-pageTitle-img {
-//     width: 18.8rem;
-//     height: auto;
-//     @include mq(sp) {
-//       margin-top: 2.7rem;
-//     }
-//   }
-// }
-
-// .p-companyInfo {
-//   .p-companyInfo__table {
-//     padding-top: 6.4rem;
-//     padding-bottom: 8.8rem;
-//     @include mq(sp) {
-//       padding-top: 3.2rem;
-//       padding-bottom: 3.2rem;
-//     }
-
-//     table {
-//       text-align: left;
-//       border-collapse: collapse;
-//       @include mq(sp) {
-//         width: 100%;
-//       }
-
-//       .is-sp {
-//         display: none;
-//         @include mq(sp) {
-//           display: block;
-//         }
-//       }
-
-//       tr {
-//         font-size: 2.4rem;
-//         line-height: 2.9rem;
-//         font-weight: 700;
-//         vertical-align: middle;
-//         height: 8rem;
-//         border-top: 0.2rem solid #aad5f6;
-//         border-bottom: 0.2rem solid #aad5f6;
-//         @include mq(sp) {
-//           font-size: 1.4rem;
-//           // border-top: 0.1rem solid #AAD5F6;
-//           border-top: none;
-//           border-bottom: 0.2em solid #aad5f6;
-//           height: auto;
-//           display: block;
-//           padding: 1.5rem 1.2rem;
-//           line-height: 1.9rem;
-
-//           &:nth-of-type(1) {
-//             border-top: 0.2rem solid #aad5f6;
-//           }
-//         }
-//       }
-
-//       th {
-//         width: 18rem;
-//         color: #7c726f;
-//         padding: 0 2rem;
-//         @include mq(sp) {
-//           padding: 0 0;
-//           display: block;
-//         }
-//       }
-
-//       td {
-//         @include mq(sp) {
-//           display: block;
-//           margin-top: 0.7rem;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .p-privacyPolicy {
-//   padding-top: 0;
-//   padding-bottom: 8.8rem;
-//   @include mq(sp) {
-//     padding-bottom: 3.9rem;
-//   }
-
-//   .c-privacyPolicy__item {
-//     &:not(:first-child) {
-//       margin-top: 5.5rem;
-//       @include mq(sp) {
-//         margin-top: 3rem;
-//       }
-//     }
-//   }
-
-//   .p-privacyPolicy__items {
-//     margin-top: 2.2rem;
-//     @include mq(sp) {
-//       margin-top: 0;
-//     }
-//   }
-
-//   .c-privacyPolicy__title {
-//     font-weight: 700;
-//     font-size: 2.4rem;
-//     line-height: 5rem;
-//     border-bottom: 0.4rem solid #707070;
-//     @include mq(sp) {
-//       font-size: 1.6rem;
-//       line-height: 3rem;
-//       border-bottom: 0.2rem solid #707070;
-//     }
-
-//     p {
-//       display: inline-block;
-//       position: relative;
-
-//       &:after {
-//         position: absolute;
-//         content: "";
-//         height: 0.4rem;
-//         width: 100%;
-//         background-color: $clear-blue;
-//         left: 0;
-//         bottom: -0.4rem;
-//         @include mq(sp) {
-//           height: 0.2rem;
-//           bottom: -0.2rem;
-//         }
-//       }
-//     }
-//   }
-
-//   .c-privacyPolicy__content {
-//     margin-top: 2.3rem;
-//     font-size: 1.6rem;
-//     line-height: 3rem;
-//     @include mq(sp) {
-//       font-size: 1.4rem;
-//       line-height: 2.6rem;
-//       margin-top: 1.5rem;
-//     }
-
-//     a {
-//       color: $clear-blue;
-//       position: relative;
-//       padding-right: 1.5rem;
-//       display: inline-block;
-//     }
-//   }
-// }
-
-// header {
-//   height: 10.7rem;
-//   @include mq(sp) {
-//     height: 6.4rem;
-//   }
-
-//   .l-inner {
-//     height: inherit;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//   }
-
-//   .l-header-logo {
-//     width: 18.3rem;
-//     height: 3.5rem;
-//     @include mq(sp) {
-//       width: 9.7rem;
-//       height: 1.9rem;
-//     }
-//   }
-
-//   .header-nav-pc {
-//     @include mq(sp) {
-//       display: none;
-//     }
-//   }
-
-//   .header-nav__items {
-//     display: flex;
-//     font-size: 1.8rem;
-//     line-height: 2.2rem;
-//     font-weight: 700;
-//     gap: 4.8rem;
-//   }
-// }

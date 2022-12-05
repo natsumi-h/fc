@@ -187,8 +187,8 @@
   position: absolute;
   content: "";
   background-color: white;
-  width: 7px;
-  height: 7px;
+  width: 0.7rem;
+  height: 0.7rem;
   border-radius: 50%;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -1542,6 +1542,10 @@
   color: #ff776b;
 }
 
+.l-section__contact form .txt-error.privacyPolicy, .l-section__contact form .txt-error.wrongInputs {
+  margin-top: 1.5rem;
+}
+
 .l-section__contact form .txt-thanks,
 .l-section__contact form .txt-submitError,
 .l-section__contact form .loading {
@@ -1569,18 +1573,12 @@
 }
 
 .l-section__contact form .contact-form-row:not(:first-child) {
-  margin-top: 32px;
-}
-
-@media (max-width: 1200px) {
-  .l-section__contact form .contact-form-row:not(:first-child) {
-    margin-top: 3.2rem;
-  }
+  margin-top: 3.2rem;
 }
 
 @media (max-width: 414px) {
   .l-section__contact form .contact-form-row:not(:first-child) {
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 }
 
@@ -1607,7 +1605,7 @@
     width: 100%;
   }
   .l-section__contact form .l-contact-form-flex .column:not(:first-child) {
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 }
 
@@ -1689,7 +1687,7 @@
 
 @media (max-width: 414px) {
   .l-section__contact form dt label {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
 
@@ -1755,9 +1753,7 @@
 @media (max-width: 414px) {
   .l-section__contact form dd.dd-privacyPolicy {
     margin-top: 0.6rem;
-    font-size: 1.4rem;
-    line-height: 1.7rem;
-    text-align: center;
+    line-height: 1.47rem;
   }
 }
 
@@ -1999,7 +1995,7 @@
           appearance: none;
   color: inherit;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: inherit;
   width: 100%;
   height: 19.1rem;
@@ -2073,16 +2069,19 @@
 }
 
 @media (max-width: 414px) {
-  .l-section__contact form .checkbox-span {
-    font-size: 14px;
-    line-height: 28px;
-    padding-left: 42px;
+  .l-section__contact form .checkbox-span:before {
+    width: 2.5rem;
+    height: 2.5rem;
+    left: -3.3rem;
+    top: -0.5rem;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 
 .l-section__contact form .checkbox-span:hover::before {
   cursor: pointer;
-  border: 1px solid black;
+  border: 0.1rem solid #943a7e;
 }
 
 .l-section__contact form .checkbox-span:hover::after {
@@ -2097,31 +2096,22 @@
   left: -3rem;
   -webkit-transform: rotate(-45deg) translateY(-50%);
           transform: rotate(-45deg) translateY(-50%);
-  border-bottom: 4px solid #943a7e;
-  border-left: 4px solid #943a7e;
-  width: 30px;
-  height: 15px;
+  border-bottom: 0.4rem solid #943a7e;
+  border-left: 0.4rem solid #943a7e;
+  width: 3rem;
+  height: 1.5rem;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
-@media (max-width: 1200px) {
-  .l-section__contact form .checkbox-span:after {
-    width: 3rem;
-    height: 1.5rem;
-    left: 0.5rem;
-    border-bottom: 0.4rem solid #3b3938;
-    border-left: 0.4rem solid #3b3938;
-  }
-}
-
 @media (max-width: 414px) {
   .l-section__contact form .checkbox-span:after {
-    width: 25px;
-    height: 13px;
-    left: 5px;
-    border-bottom: 3px solid #3b3938;
-    border-left: 3px solid #3b3938;
+    width: 2.5rem;
+    height: 1.3rem;
+    left: -2.8rem;
+    top: calc(50% - 1rem);
+    border-bottom: 0.3rem solid #943a7e;
+    border-left: 0.3rem solid #943a7e;
   }
 }
 
@@ -2146,10 +2136,10 @@ footer {
 
 @media (max-width: 414px) {
   footer {
-    padding-top: 73px;
-    padding-bottom: 38px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-top: 7.3rem;
+    padding-bottom: 3.8rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
@@ -2167,7 +2157,7 @@ footer p {
 
 @media (max-width: 414px) {
   footer p {
-    font-size: 13px;
+    font-size: 1.3rem;
   }
 }
 
@@ -2178,7 +2168,7 @@ footer p.l-footer__companyName {
 
 @media (max-width: 414px) {
   footer p.l-footer__companyName {
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 }
 
@@ -2189,7 +2179,7 @@ footer .l-footer__detail {
 
 @media (max-width: 414px) {
   footer .l-footer__detail {
-    margin-top: 32px;
+    margin-top: 3.2rem;
   }
 }
 
@@ -2202,8 +2192,8 @@ footer .l-footer__copyright {
 
 @media (max-width: 414px) {
   footer .l-footer__copyright {
-    font-size: 12px;
-    margin-top: 26px;
+    font-size: 1.2rem;
+    margin-top: 2.6rem;
   }
 }
 
@@ -2225,7 +2215,7 @@ footer .l-footer__totop {
     top: -2.713rem;
     width: 5.426rem;
     height: 5.426rem;
-    right: 30px;
+    right: 3rem;
   }
 }
 
