@@ -1458,6 +1458,11 @@
   line-height: 1.8;
 }
 
+.l-inner.about .l-about__profile-p a {
+  text-decoration: underline;
+  color: #943a7e;
+}
+
 .l-section__contact {
   background-color: #f7f2f4;
   padding-top: 4.67rem;

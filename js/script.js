@@ -21,7 +21,6 @@ jQuery(function () {
       }
 
       //ヘッダーの高さが可変するときは上を下の記述に置き換える
-      //var headerHight = jQuery("header").outerHeight();
       var speed = 300;
       var href = $(this).attr("href");
       var target = $(href == "#" || href == "" ? "html" : href);
@@ -70,11 +69,9 @@ jQuery(function () {
       const validateType = () => {
         if ($('select[id="type"]').find("option:selected").val() == "") {
           $(".txt-error.type").css("display", "block");
-          // $('select[id="type"]').addClass("input-error");
           return false;
         } else {
           $(".txt-error.type").css("display", "none");
-          // $('select[id="type"]').removeClass("input-error");
           return true;
         }
       };
@@ -84,25 +81,29 @@ jQuery(function () {
       let emailIncorrect = !$('input[id="email"]')
         .val()
         .match(
-          /^((?:(?:(?:(?:(?:(?:[\x20\x09])+)?(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))*(?:(?:(?:(?:[\x20\x09])+)?(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))|(?:(?:[\x20\x09])+)))?(?:(?:[A-Za-z0-9!#\$\%&amp;'*+\-/=?\^_`{|}~])+(?:[A-Za-z0-9!#\$\%&amp;'*+\-/=?\^_`{|}~\.])*)(?:(?:(?:[A-Za-z0-9!#\$\%&amp;'*+\-/=?\^_`{|}~])+(?:[A-Za-z0-9!#\$\%&amp;'*+\-/=?\^_`{|}~\.])*)|(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))*)|(?:(?:(?:(?:(?:[\x20\x09])+)?(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))*(?:(?:(?:(?:[\x20\x09])+)?(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))|(?:(?:[\x20\x09])+)))?"(?:(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\))|(?:[A-Za-z0-9!#\$\%&amp;'*+\-/=?\^_`{|}~\.]))*"(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\))*))\@(?:(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\))*(?:(?:[A-Za-z0-9!#\$\%&amp;'*+/=?\^_`{|}~])+(?:\-+(?:[A-Za-z0-9!#\$\%&amp;'*+/=?\^_`{|}~])+)*(?:\.(?:[A-Za-z0-9!#\$\%&amp;'*+/=?\^_`{|}~])+(?:\-+(?:[A-Za-z0-9!#\$\%&amp;'*+/=?\^_`{|}~])+)*)+)(?:(?:(?:(?:[\x20\x09])+)?(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))*(?:(?:(?:(?:[\x20\x09])+)?(?:\((?:(?:(?:[\x20\x09])+)?(?:[\x09\x20-\x28\x2a-\x7e]))*(?:(?:[\x20\x09])+)?\)))|(?:(?:[\x20\x09])+)))?))$/
+          "^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*.)+[a-zA-Z]{2,}$"
         );
+      let emailLong = $('input[id="email"]').val().length > 200;
       const validateEmail = () => {
-        //空欄時
         if (emailEmpty) {
           $(".txt-error.email").css("display", "block");
+          $(".txt-error.email-length").css("display", "none");
           $(".txt-error.email-wrong").css("display", "none");
           return false;
-        }
-        //空欄ではなく、非正規表現のとき
-        else if (!emailEmpty && emailIncorrect) {
+        } else if (emailIncorrect) {
           $(".txt-error.email-wrong").css("display", "block");
           $(".txt-error.email").css("display", "none");
+          $(".txt-error.email-length").css("display", "none");
           return false;
-        }
-        //空欄でもなく、非正規表現でもないとき
-        else {
+        } else if (!emailIncorrect && emailLong) {
           $(".txt-error.email-wrong").css("display", "none");
           $(".txt-error.email").css("display", "none");
+          $(".txt-error.email-length").css("display", "block");
+          return false;
+        } else if (!emailIncorrect && !emailLong) {
+          $(".txt-error.email-wrong").css("display", "none");
+          $(".txt-error.email").css("display", "none");
+          $(".txt-error.email-length").css("display", "none");
           return true;
         }
       };
@@ -122,11 +123,60 @@ jQuery(function () {
       const validateMessage = () => {
         if ($('textarea[id="message"]').val().length == 0) {
           $(".txt-error.message").css("display", "block");
-          // $('input[id="name"]').addClass("input-error");
           return false;
         } else {
           $(".txt-error.message").css("display", "none");
-          // $('input[id="name"]').removeClass("input-error");
+          return true;
+        }
+      };
+
+      // 文字数
+      const validateNameLength = () => {
+        if ($('input[id="name"]').val().length > 50) {
+          $(".txt-error.name-length").css("display", "block");
+          return false;
+        } else {
+          $(".txt-error.name-length").css("display", "none");
+          return true;
+        }
+      };
+
+      const validateCompanyLength = () => {
+        if ($('input[id="company"]').val().length > 100) {
+          $(".txt-error.company-length").css("display", "block");
+          return false;
+        } else {
+          $(".txt-error.company-length").css("display", "none");
+          return true;
+        }
+      };
+
+      const validatePhoneLength = () => {
+        if ($('input[id="phone"]').val().length > 50) {
+          $(".txt-error.phone-length").css("display", "block");
+          return false;
+        } else {
+          $(".txt-error.phone-length").css("display", "none");
+          return true;
+        }
+      };
+
+      const validateUrlLength = () => {
+        if ($('input[id="url"]').val().length > 200) {
+          $(".txt-error.url-length").css("display", "block");
+          return false;
+        } else {
+          $(".txt-error.url-length").css("display", "none");
+          return true;
+        }
+      };
+
+      const validateMessageLength = () => {
+        if ($('textarea[id="message"]').val().length > 1000) {
+          $(".txt-error.message-length").css("display", "block");
+          return false;
+        } else {
+          $(".txt-error.message-length").css("display", "none");
           return true;
         }
       };
@@ -137,6 +187,11 @@ jQuery(function () {
       validateEmail();
       validateMessage();
       validatePolicyAgreement();
+      validateNameLength();
+      validateCompanyLength();
+      validatePhoneLength();
+      validateUrlLength();
+      validateMessageLength();
 
       // Ajax通信中
       $(document).ajaxSend(function () {
@@ -151,6 +206,10 @@ jQuery(function () {
         validateMessage() &&
         validatePolicyAgreement()
       ) {
+        // 二重送信を防止する
+        $('[id="form"]').find(":submit").prop("disabled", "true");
+        $(".contact-form-button").fadeOut();
+
         $(".txt-error.wrongInputs").css("display", "none");
         var formData = $("#form").serialize();
         $.ajax({
@@ -161,7 +220,7 @@ jQuery(function () {
           statusCode: {
             0: function () {
               $(".txt-thanks").slideDown();
-              $(".contact-form-button").fadeOut();
+              // $(".contact-form-button").fadeOut();
               $(".loading").css("display", "none");
             },
             200: function () {
