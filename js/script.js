@@ -213,7 +213,7 @@ jQuery(function () {
         $(".txt-error.wrongInputs").css("display", "none");
         var formData = $("#form").serialize();
         $.ajax({
-          url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfdRDHf0DmCYPIJ5orPrwPyW9iNyZuG0HRuWeCjfaVRPK90uw/formResponse",
+          url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeox-k18D5W4pzQ_UWdIUOX7n7mW451QQT8fZ9MS0qZt65SEg/formResponse",
           data: formData,
           type: "POST",
           dataType: "xml",
